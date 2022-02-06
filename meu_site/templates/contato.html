@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Contato{% endblock %}
+
+{% block corpo %}
+<div style="display: flex; justify-content: center; flex-direction: column; width: 60%; margin-left: 20%; margin-top: 5%;">
+    <form action="">
+<div class="mb-3">
+    <label for="textNome" class="form-label text-primary">Nome</label>
+    <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" />
+</div>
+<div class="mb-3">
+    <label for="textNome" class="form-label text-primary">E-mail</label>
+    <input type="email" class="form-control" id="txtNome" placeholder="Informe seu nome" />
+</div>
+<div class="mb-2">
+    <input type="submit" value="Enviar" class="btn btn-primary">
+    <input type="reset" value="Cancelar" class="btn btn-secondary">
+</div>
+</form>
+</div>
+
+{% endblock %}

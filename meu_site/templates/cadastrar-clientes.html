@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastrar Cliente{% endblock %}
+
+{% block corpo %}
+<div style="display: flex; justify-content: center; flex-direction: column; width: 60%; margin-left: 20%; margin-top: 5%;">
+    <div style=" display: flex; flex-direction: row; justify-content: center;">
+    <h1><label class="text-primary">Cadastro de Clientes</label> </h1>
+    </div>
+<form method="post" action="">
+        <div class="mb-3">
+            <label for="textNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="textEmail" class="form-label text-primary">E-mail</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="usuario@provedor.com.,br" required />
+        </div>
+        <div class="mb-3">
+            <label for="textDtNascimeno" class="form-label text-primary">Data Nascimento</label>
+            <input type="date" class="form-control" id="txtDtNascimento" placeholder="dd/mm/aaaa" required />
+        </div>
+        <div class="mb-3">
+            <label for="textCPFCNPJ" class="form-label text-primary">CPF/CNPJ</label>
+            <input type="text" class="form-control" id="txtCPFCNPJ" placeholder="Somente números" required />
+        </div>
+        <div class="mb-3">
+            <label for="textCidade" class="form-label text-primary">Cidade</label>
+            <select name="txtCidade" id="txtCidade" class="form-select">
+                <option value="Blumenau">Blumenau</option>
+                <option value="Joinville">Joinville</option>
+                <option value="Curitiba">Curitiba</option>
+        </select>
+        </div>
+        <div class="mb-3">
+            <label for="textSexo" class="form-label text-primary">Sexo</label>
+            <select name="txtSexo" id="txtSexo" class="form-select">
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
+         <div class="mb-3">
+             <label for="textProfissao" class="form-label text-primary">Profissão</label>
+            <input type="text" class="form-control" id="txtProfissao" placeholder="Informe sua profissão" required />
+             </div>
+
+             <div class="mb-3">
+                <label for="textRenda" class="form-label text-primary">Renda</label>
+                <input type="text" class="form-control" id="txtNome" placeholder="Informe sua renda" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="textCarro" class="form-label text-primary">Possui Carro</label>
+                <select name="txtSexo" id="txtSexo" class="form-select">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+
+            <div class="mb-3">
+                <label for="textEstCivil" class="form-label text-primary">Estado Civil</label>
+                <select name="txtEstCivil" id="txtEstCivil" class="form-select">
+                    <option value="1">Solteiro(a)</option>
+                    <option value="2">Casado(a)</option>
+                    <option value="3">Divorciado(a)</option>
+                    <option value="4">Viúvo(a)</option>
+                    <option value="5">Desquitado</option>
+                    <option value="6">União Estável</option>
+                </select>
+
+            <div class="mb-3">
+                <label for="textFilho" class="form-label text-primary">Possui Filhos</label>
+                <select name="txtFilho" id="txtFilho" class="form-select">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                 </select>
+
+            
+
+        <div class="mb-2">
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
+            <input type="reset" value="Cancelar" class="btn btn-secondary">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
