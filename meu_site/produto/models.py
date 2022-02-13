@@ -25,4 +25,3 @@ class Produto(models.Model):
 class Servico(models.Model):
     nome = models.CharField(max_length=50,blank=False,null=False)
     valor = models.DecimalField(max_digits=5,decimal_places=2,null=False)
-    categ = models.ForeignKey(Categoria,on_delete=models.CASCADE,null=False)

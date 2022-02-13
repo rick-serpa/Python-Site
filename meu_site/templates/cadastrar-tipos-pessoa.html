@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastrar Tipo de Pessoa{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados">
+    <div style=" display: flex; flex-direction: row; justify-content: center;">
+    <h1><label class="text-primary">Cadastro de Tipo de Pessoa</label> </h1>
+    </div>
+<form method="post" action="">
+        <div class="mb-3">
+            <label for="textNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+        </div>
+
+        <div class="mb-2">
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
+            <input type="reset" value="Cancelar" class="btn btn-secondary">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

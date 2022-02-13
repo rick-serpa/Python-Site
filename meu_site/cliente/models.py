@@ -26,6 +26,7 @@ class CPFCNPJ(models.Model):
 
 class UF(models.Model):
     sigla = models.CharField(max_length=2,unique=True,blank=False,null=False)
+    nome = models.CharField(max_length=20,unique=True,blank=False,null=False)
 
     class Meta:
         db_table = 'UF'

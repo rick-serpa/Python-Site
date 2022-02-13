@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block titulo %}Página Inicial{% endblock %}
 
 
 
-{% block corpo %} <h1><center> Eu sou a página inicial do projeto </center></h1>{% endblock %}
+{% block corpo %}
+<img src="{% static 'imagens/imagemPrincipal.jpg'%}" alt="Principal" id="imagemPrincipal"/>
 
-<button class="btn btn-primary">Eu sou botão</button>
+{% endblock %}
+<!-- cntrl + shift + r -->
