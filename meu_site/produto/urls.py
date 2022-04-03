@@ -3,6 +3,6 @@ from django.urls import path
 from django.views.generic import TemplateView
 from .views import lista_produtos
 
-urlpaterns = {
+urlpaterns = [
     path('produto-lista',lista_produtos),
-}
+]

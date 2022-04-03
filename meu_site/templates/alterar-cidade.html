@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar Cidade{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Alteração de Cidade</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" value="{{ cidade.nome }}" placeholder="Informe o nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtSigla" class="form-label text-primary">Estado</label>
+            <select id="txtSigla" name="uf" class="form-select">
+                {% for estados in estado %}
+                {% if estados.id == uf.id %}
+                <option value="{{ estados.id }}" selected>{{ estados.nome }}</option>
+                {% else %}
+                <option value="{{ estados.id }}" >{{ estados.nome }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Alterar" class="btn btn-warning" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

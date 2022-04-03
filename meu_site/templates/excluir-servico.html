@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Excluir Serviço{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Exclusão de Serviço</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" value="{{ servico.nome }}" placeholder="Informe o nome" readonly />
+        </div>
+        <div class="mb-3">
+            <label for="txtValor" class="form-label text-primary">Valor</label>
+            <input type="text" class="form-control" id="txtValor" name="valor" value="{{ servico.valor }}" placeholder="Informe o valor" readonly />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

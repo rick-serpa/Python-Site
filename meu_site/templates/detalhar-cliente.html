@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalhe do Cliente{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Detalhe do Cliente</label></h1>
+    </div>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="txtNome" class="form-label text-primary">Nome</label>
+        <input type="text" class="form-control" id="txtNome" name="nome" value="{{ cliente.nome }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtEmail" class="form-label text-primary">E-mail</label>
+        <input type="email" class="form-control" name="email" id="txtEmail" value="{{ cliente.email }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtDtNascimento" class="form-label text-primary">Data Nascimento</label>
+        <input type="text" class="form-control" name="nasc" id="txtDtNascimento" value="{{ cliente.nasc }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtCPFCNPJ" class="form-label text-primary">CPF/CNPJ</label>
+        <input type="text" class="form-control" name="cpfcnpj" id="txtCPFCNPJ" value="{{ cliente.cpfcnpj }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtCPFCNPJ" class="form-label text-primary">Cidade</label>
+        <input type="text" class="form-control" name="cidade_id" id="txtCPFCNPJ" value="{{ cidade.nome }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtSexo" class="form-label text-primary">Sexo</label>
+        {% if cliente.sexo == 'M' %}
+        <input type="text" class="form-control" id="txtSexo" name="sexo" value="Masculino" readonly />
+        {% elif cliente.sexo == 'F' %}
+        <input type="text" class="form-control" id="txtSexo" name="sexo" value="Feminino" readonly />
+        {% else %}
+        <input type="text" class="form-control" id="txtSexo" name="sexo" value="Inválido" readonly />
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="txtProfissao" class="form-label text-primary">Profissão</label>
+        <input type="text" class="form-control" id="txtProfissao" name="profissao" value="{{ cliente.profissao }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtCarro" class="form-label text-primary">Possui Carro</label>
+        {% if cliente.carro == 'S' %}
+        <input type="text" class="form-control" id="txtCarro" name="carro" value="Sim" readonly />
+        {% else %}
+        <input type="text" class="form-control" id="txtCarro" name="carro" value="Não" readonly />
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="txtEstCivil" class="form-label text-primary">Estado Civil</label>
+        <input type="text" class="form-control" id="txtEstCivil" name="EstCivil" value="{{ CliEstCivil }}" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="txtFilhos" class="form-label text-primary">Possui Filhos</label>
+        {% if cliente.filhos == 'S' %}
+        <input type="text" class="form-control" id="txtFilhos" name="filhos" value="Sim" readonly />
+        {% else %}
+        <input type="text" class="form-control" id="txtFilhos" name="filhos" value="Não" readonly />
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="txtRenda" class="form-label text-primary">Renda</label>
+        <input type="text" class="form-control" id="txtRenda" name="renda" value="{{ cliente.renda }}" readonly />
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-info" onclick='redireciona("{% url 'lista-cliente' %}")'>Lista</button>
+    </div>
+</div>
+{% endblock %}

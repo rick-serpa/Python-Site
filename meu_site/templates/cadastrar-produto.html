@@ -3,35 +3,32 @@
 {% block titulo %}Cadastrar Produto{% endblock %}
 
 {% block corpo %}
-<div id="conteudo-dados">
-    <div style=" display: flex; flex-direction: row; justify-content: center;">
-    <h1><label class="text-primary">Cadastro de Produtos</label> </h1>
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Cadastro de Produto</label></h1>
     </div>
-<form method="post" action="">
+    <form method="post" action="">
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="textNome" class="form-label text-primary">Nome</label>
-            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Informe o nome" required />
         </div>
-
         <div class="mb-3">
-            <label for="textValor" class="form-label text-primary">Valor</label>
-                <input type="textValor" class="form-control" id="txtValor" placeholder="Informe o valor" required />
+            <label for="txtValor" class="form-label text-primary">Valor</label>
+            <input type="text" class="form-control" id="txtValor" name="valor" placeholder="Informe o valor" required />
         </div>
-
         <div class="mb-3">
-            <label for="textCategoria" class="form-label text-primary">Categoria</label>
-            <select name="txtCategoria" id="txtCategoria" class="form-select">
-                <option value="S">Hardware</option>
-                <option value="N">Software</option>
+            <label for="txtCategoria" class="form-label text-primary">Categoria</label>
+            <select name="categ" id="txtCategoria" class="form-select">
+                {% for categoria in categoria %}
+                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                {% endfor %}
             </select>
-
-            
-
-        <div class="mb-2">
-            <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Cancelar" class="btn btn-secondary">
         </div>
+        <div class="mb-3">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
     </form>
 </div>
-
 {% endblock %}

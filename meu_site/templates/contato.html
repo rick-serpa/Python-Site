@@ -3,21 +3,20 @@
 {% block titulo %}Contato{% endblock %}
 
 {% block corpo %}
-<div id="conteudo-dados">
+<div id="conteudo-dados" >
     <form action="">
-<div class="mb-3">
-    <label for="textNome" class="form-label text-primary">Nome</label>
-    <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" />
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label text-primary">E-mail</label>
+            <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="usuario@provedor.com.br" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>
+    </form>
 </div>
-<div class="mb-3">
-    <label for="textNome" class="form-label text-primary">E-mail</label>
-    <input type="email" class="form-control" id="txtNome" placeholder="Informe seu nome" />
-</div>
-<div class="mb-2">
-    <input type="submit" value="Enviar" class="btn btn-primary">
-    <input type="reset" value="Cancelar" class="btn btn-secondary">
-</div>
-</form>
-</div>
-
 {% endblock %}

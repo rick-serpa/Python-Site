@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar Estado Civil{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Alteração de Estado Civil</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtEstadoCivil" class="form-label text-primary">Descricao</label>
+            <input type="text" class="form-control" id="txtEstadoCivil" name="descricao" value="{{ estadoCivil.descricao }}" placeholder="Informe a Descrição" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Alterar" class="btn btn-warning" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

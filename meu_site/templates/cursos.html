@@ -3,25 +3,25 @@
 {% block titulo %}Cursos{% endblock %}
 
 {% block corpo %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th colspan="3">Lista de Cursos</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for curso in cursos %}
-        <tr>
-            <td>{{ curso }}</td>
-            <td><a href="alterar-{{ curso }}"> Alterar</td></a>
-            <td><a href="excluir-{{ curso }}"> Excluir</td></a>
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td align="right" colspan="3">Total de Cursos: <strong> {{ total }} </strong></td>
-        </tr>
-    </tfoot>
-</table>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th colspan="3">Lista de Cursos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+            <tr>
+                <td>{{ curso }}</td>
+                <td><a href="alterar-{{ curso }}">Alterar</a> </td>
+                <td><a href="excluir-{{ curso }}">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td align="right" colspan="3">Total de Cursos: <strong>{{ total }}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
 {% endblock %}

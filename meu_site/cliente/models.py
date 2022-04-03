@@ -1,7 +1,4 @@
-from asyncio.windows_events import NULL
-from pyexpat import model
 from tkinter import CASCADE
-from unittest.util import unorderable_list_difference
 from django.db import models
 
 # Create your models here.
@@ -10,17 +7,17 @@ class TpPessoa(models.Model):
 
     class Meta:
         db_table = 'TpPessoa'
-
+    
     def __str__(self):
         return self.nome
 
 class CPFCNPJ(models.Model):
-    valor = models.CharField(max_length=11,blank=False,null=False, unique=True)
+    valor = models.CharField(max_length=11,blank=False,null=False,unique=True)
     tipo = models.ForeignKey(TpPessoa,on_delete=models.CASCADE,blank=False,null=False)
 
     class Meta:
         db_table = 'CPFCNPJ'
-
+    
     def __str__(self):
         return self.valor
 
@@ -29,8 +26,8 @@ class UF(models.Model):
     nome = models.CharField(max_length=20,unique=True,blank=False,null=False)
 
     class Meta:
-        db_table = 'UF'
-
+        db_table = 'uf'
+    
     def __str__(self):
         return self.sigla
 
@@ -40,14 +37,23 @@ class Cidade(models.Model):
 
     class Meta:
         db_table = 'cidade'
-
+    
     def __str__(self):
         return self.nome
+
+class EstadoCivil(models.Model):
+    descricao = models.CharField(max_length=50,blank=False,null=False)
+
+    class Meta:
+        db_table = 'EstadoCivil'
+
+    def __str__(self):
+        return self.descricao
 
 class Cliente(models.Model):
     SEXO = [
         ('M','Masculino'),
-        ('f','Feminino'),
+        ('F','Feminino'),
     ]
     CARRO = [
         ('S','Sim'),
@@ -66,21 +72,22 @@ class Cliente(models.Model):
         ('N','Não'),
     ]
     nome = models.CharField(max_length=50,null=False,blank=False)
-    email = models.CharField(max_length=100,null=True,blank=True)
-    nasc = models.DateField(null=True,blank=True)
-    cpfcnpj = models.OneToOneField(CPFCNPJ,on_delete=models.CASCADE,blank=False,null=False)
-    cidade = models.ManyToManyField(Cidade)
-    sexo = models.CharField(max_length=1,choices=SEXO, null=True,blank=True)
-    profissao = models.CharField(max_length=50,null=True,blank=True)
-    renda = models.DecimalField(max_digits=8,decimal_places=2,null=True,blank=True)
-    carro = models.CharField(max_length=1,choices=CARRO,null=True,blank=True)
-    EstCivil = models.IntegerField(choices=ESTADO_CIVIL,default=1,null=True,blank=True)
-    filhos = models.CharField(max_length=1,choices=FILHOS,null=True,blank=True)
+    email = models.CharField(max_length=100,null=False,blank=False)
+    nasc = models.DateField(null=False,blank=False)
+    cpfcnpj = models.CharField(max_length=14,blank=False,null=False)
+    # cidade = models.ManyToManyField(Cidade)
+    # cidade = models.OneToOneField(Cidade,on_delete=models.CASCADE,blank=False,null=False)
+    cidade = models.ForeignKey(Cidade,on_delete=models.CASCADE)
+    sexo = models.CharField(max_length=1,choices=SEXO, null=True,blank=False)
+    profissao = models.CharField(max_length=50, null=True,blank=False)
+    renda = models.DecimalField(max_digits=8,decimal_places=2, null=True,blank=False)
+    carro = models.CharField(max_length=1,choices=CARRO, null=True,blank=False)
+    EstCivil = models.IntegerField(choices=ESTADO_CIVIL,default=1,null=True,blank=False)
+    filhos = models.CharField(max_length=1,choices=FILHOS,null=True,blank=False)    
+
 
     class Meta:
         db_table = 'cliente'
-
+    
     def __str__(self):
         return self.nome
-
-

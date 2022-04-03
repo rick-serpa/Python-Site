@@ -3,83 +3,101 @@
 {% block titulo %}Cadastrar Cliente{% endblock %}
 
 {% block corpo %}
-<div id="conteudo-dados">
-    <div style=" display: flex; flex-direction: row; justify-content: center;">
-    <h1><label class="text-primary">Cadastro de Clientes</label> </h1>
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Cadastro de Cliente</label></h1>
     </div>
-<form method="post" action="">
+    <form method="POST" >
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="textNome" class="form-label text-primary">Nome</label>
-            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Informe seu nome" required />
         </div>
         <div class="mb-3">
-            <label for="textEmail" class="form-label text-primary">E-mail</label>
-            <input type="email" class="form-control" id="txtEmail" placeholder="usuario@provedor.com.,br" required />
+            <label for="txtEmail" class="form-label text-primary">E-mail</label>
+            <input type="email" class="form-control" name="email" id="txtEmail"
+            placeholder="usuario@provedor.com.br" required />
         </div>
         <div class="mb-3">
-            <label for="textDtNascimeno" class="form-label text-primary">Data Nascimento</label>
-            <input type="date" class="form-control" id="txtDtNascimento" placeholder="dd/mm/aaaa" required />
+            <label for="txtDtNascimento" class="form-label text-primary">Data Nascimento</label>
+            <input type="date" class="form-control" name="nasc" id="txtDtNascimento" required />
         </div>
         <div class="mb-3">
-            <label for="textCPFCNPJ" class="form-label text-primary">CPF/CNPJ</label>
-            <input type="text" class="form-control" id="txtCPFCNPJ" placeholder="Somente números" required />
+            <label for="txtCPFCNPJ" class="form-label text-primary">CPF/CNPJ</label>
+            <input type="text" class="form-control" id="txtCPFCNPJ"
+            placeholder="Somente números" required name="cpfcnpj" maxlength="14" minlength="11" />
         </div>
         <div class="mb-3">
-            <label for="textCidade" class="form-label text-primary">Cidade</label>
-            <select name="txtCidade" id="txtCidade" class="form-select">
-                <option value="Blumenau">Blumenau</option>
-                <option value="Joinville">Joinville</option>
-                <option value="Curitiba">Curitiba</option>
-        </select>
+            <label for="txtEstado" class="form-label text-primary">Estado</label>
+            <select name="estado" id="txtEstado" class="form-select">
+                <option value="0">Selecione</option>
+                {% for estados in uf %}
+                <option value="{{ estados.id }}">{{ estados.nome }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="mb-3">
-            <label for="textSexo" class="form-label text-primary">Sexo</label>
-            <select name="txtSexo" id="txtSexo" class="form-select">
+            <label for="txtCidade" class="form-label text-primary">Cidade</label>
+            <select name="cidade" id="txtCidade" class="form-select">
+                <option value="0" selected>Selecione o estado</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtSexo" class="form-label text-primary">Sexo</label>
+            <select name="sexo" id="txtSexo" class="form-select">
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
             </select>
-         <div class="mb-3">
-             <label for="textProfissao" class="form-label text-primary">Profissão</label>
-            <input type="text" class="form-control" id="txtProfissao" placeholder="Informe sua profissão" required />
-             </div>
-
-             <div class="mb-3">
-                <label for="textRenda" class="form-label text-primary">Renda</label>
-                <input type="text" class="form-control" id="txtNome" placeholder="Informe sua renda" required />
-            </div>
-
-            <div class="mb-3">
-                <label for="textCarro" class="form-label text-primary">Possui Carro</label>
-                <select name="txtSexo" id="txtSexo" class="form-select">
-                    <option value="S">Sim</option>
-                    <option value="N">Não</option>
-                </select>
-
-            <div class="mb-3">
-                <label for="textEstCivil" class="form-label text-primary">Estado Civil</label>
-                <select name="txtEstCivil" id="txtEstCivil" class="form-select">
-                    <option value="1">Solteiro(a)</option>
-                    <option value="2">Casado(a)</option>
-                    <option value="3">Divorciado(a)</option>
-                    <option value="4">Viúvo(a)</option>
-                    <option value="5">Desquitado</option>
-                    <option value="6">União Estável</option>
-                </select>
-
-            <div class="mb-3">
-                <label for="textFilho" class="form-label text-primary">Possui Filhos</label>
-                <select name="txtFilho" id="txtFilho" class="form-select">
-                    <option value="S">Sim</option>
-                    <option value="N">Não</option>
-                 </select>
-
-            
-
-        <div class="mb-2">
-            <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Cancelar" class="btn btn-secondary">
         </div>
+        <div class="mb-3">
+            <label for="txtProfissao" class="form-label text-primary">Profissão</label>
+            <input type="text" name="profissao" class="form-control" id="txtProfissao" placeholder="Informe sua Profissão" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtCarro" class="form-label text-primary">Possui Carro</label>
+            <select name="carro" id="txtCarro" class="form-select">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtEstCivil" class="form-label text-primary">Estado Civil</label>
+            <select name="EstCivil" id="txtEstCivil" class="form-select">
+                {% for estadoCivil in estCivil %}
+                <option value="{{ estadoCivil.id }}">{{ estadoCivil.descricao }}</option>
+                {% endfor %}                
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtFilhos" class="form-label text-primary">Possui Filhos</label>
+            <select name="filhos" id="txtFilhos" class="form-select">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtRenda" class="form-label text-primary">Renda</label>
+            <input type="text" name="renda" class="form-control" id="txtRenda" placeholder="Informe sua Renda" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
     </form>
-</div>
-
+    <script>
+        $('#txtEstado').on('change',function(){
+            $('#txtCidade').empty();
+            $('#txtCidade').append('<option value="0" selected>Selecione a Cidade</option>');
+            $.get('getCidades/' + $(this).val(),function(retorno){
+                var retorno = retorno.replaceAll('[','').replaceAll(']','').replaceAll('<Cidade: ','').replaceAll('>','');
+                retorno = retorno.split(',');
+                for (let i = 0; i < retorno.length; i++ ) {                     
+                    $.get('getIds/' + retorno[i].trim(),function(retId){
+                        $('#txtCidade').append('<option value="'+retId.replaceAll("[","").replaceAll("]","")+'">'+retorno[i]+'</option>');
+                    });
+                };
+            });
+        })
+    </script>
+</div> 
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastrar Categoria{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Cadastro de Categoria</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

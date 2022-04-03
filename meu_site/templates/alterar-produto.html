@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar Produto{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Alteração de Produto</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" value="{{ produto.nome }}" placeholder="Informe o nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtValor" class="form-label text-primary">Valor</label>
+            <input type="text" class="form-control" id="txtValor" name="valor" value="{{ produto.valor }}" placeholder="Informe o valor" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtCategoria" class="form-label text-primary">Categoria</label>
+            <select id="txtCategoria" name="categ" class="form-select" >
+                {% for categorias in listaCategoria %}
+                {% if categorias.id == categoriaProd.id %}
+                <option value="{{ categorias.id }}" selected >{{ categorias.nome }}</option>
+                {% else %}
+                <option value="{{ categorias.id }}" >{{ categorias.nome }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Alterar" class="btn btn-warning" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Estado Civil{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Lista de Estado Civil</label></h1>
+    </div>
+    {% include 'procura.html' %}
+    <a href="cadastro-estado-civil">
+        <input type="button" value="Novo" class="btn btn-primary" />
+    </a>
+    {% if total > 0 %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th colspan="3"></th>
+            </tr>
+            <tr>
+                <td><label>Descrição</label></td>
+                <td colspan="2" align="right"><label>Ações</label></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estadoCivil in estadoCivil %}
+            <tr>
+                <td><label>{{ estadoCivil.descricao }}</label></td>
+                <td align="right">
+                    <a href="altera-estado-civil/{{ estadoCivil.id }}"><input type="button" class="btn btn-warning" value="Alterar" /></a>
+                    <a href="exclui-estado-civil/{{ estadoCivil.id }}"><input type="button" class="btn btn-danger" value="Excluir"></a>
+                </td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" align="right"><label>Total de Registros: {{ total }}</label></td>
+            </tr>
+        </tfoot>
+    </table>
+    {% elif pesquisa %}
+    {% include 'semResultado.html' %}
+    {% else %}
+    {% include 'semItens.html' %}
+    {% endif %}
+</div>
+{% endblock %}

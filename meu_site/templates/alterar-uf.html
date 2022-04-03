@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar UF{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Alteração de UF</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtSigla" class="form-label text-primary">Sigla</label>
+            <input type="text" class="form-control" id="txtSigla" name="sigla" value="{{ uf.sigla }}" placeholder="Informe a sigla" required maxlength="2" minlength="2" />
+        </div>
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" value="{{ uf.nome }}" placeholder="Informe o nome" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Alterar" class="btn btn-warning" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Cidades{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Lista de Cidades</label></h1>
+    </div>
+    {% include 'procura.html' %}
+    <div class="mb-3">
+        <label for="txtEstado" class="form-label text-primary">Estado</label>
+        <select name="estado" id="txtEstado" class="form-select">
+            <option value="0">Selecione</option>
+            {% for estados in uf %}
+            <option value="{{ estados.id }}">{{ estados.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <a href="cadastro-cidade">
+        <input type="button" value="Novo" class="btn btn-primary" />
+    </a>
+    {% if total > 0 %}
+    <table class="table table-striped" id="cidades">
+        <thead>
+            <tr>
+                <th colspan="3"></th>
+            </tr>
+            <tr>
+                <td><label>Nome</label></td>
+                <td colspan="2" align="right"><label>Ações</label></td>
+            </tr>
+        </thead>
+        <!-- <tbody>
+            {% for cidades in cidade %}
+            <tr>
+                <td><label>{{ cidades.nome }}</label></td>
+                <td align="right">
+                    <a href="altera-cidade/{{ cidades.id }}" >
+                        <input type="button" class="btn btn-warning" value="Alterar" /></a>
+                    <a href="exclui-cidade/{{ cidades.id }}">
+                        <input type="button" class="btn btn-danger" value="Excluir" /></a>
+                </td>                
+            </tr>
+            {% endfor %}
+        </tbody> -->
+        <tfoot>
+            <tr>
+                <td colspan="3" align="right"><label>Total de Registros: {{ total }}</label></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    {% elif pesquisa %}
+    {% include 'semResultado.html' %}
+    {% else %}
+    {% include 'semItens.html' %}
+    {% endif %}
+    <tr>
+        <td>
+            <label for="">
+
+            </label>
+        </td>
+    </tr>
+    <!-- <tr>
+        <td> -->
+            <label for="" id="cidade"></label>
+                <script>
+                    $('#txtEstado').on('change',function(){
+                        $.get('getCidades/' + $(this).val(),function(retorno){
+                            var retorno = retorno.replaceAll('[','').replaceAll(']','').replaceAll('<Cidade: ','').replaceAll('>','');
+                            retorno = retorno.split(',');
+                            for (let i = 0; i < retorno.length; i++ ) {                     
+                                $('#cidades tbody').append('<tr><td>'+
+                                (retorno[i] + '</td>' +
+                                '<td align="right">' +
+                                    '<a href="altera-cidade/' +
+                                    $.get('getIds/' + retorno[i].trim(),function(retId){
+                                        retId
+                                    })
+                                    +'"><input type="button" class="btn btn-warning" value="' +
+                                    $.get('getIds/' + retorno[i].trim(),function(retId){
+                                        retId
+                                    }))
+                                    +'"></a></td>' +
+                                    '<td><a href="exclui-cidade/' +
+                                    $.get('getIds/' + retorno[i].trim(),function(retId){
+                                        retId
+                                    })   +'"><input type="button" class="btn btn-danger" value="Excluir"></a></td></tr>' 
+                                );
+                            };
+                        });
+                    })
+                </script>
+            </label>
+         <!-- </td>
+     </tr> -->
+</div>
+{% endblock %}

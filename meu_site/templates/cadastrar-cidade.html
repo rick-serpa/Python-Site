@@ -3,29 +3,28 @@
 {% block titulo %}Cadastrar Cidade{% endblock %}
 
 {% block corpo %}
-<div id="conteudo-dados">
-    <div style=" display: flex; flex-direction: row; justify-content: center;">
-    <h1><label class="text-primary">Cadastro Cidade</label> </h1>
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Cadastro de Cidade</label></h1>
     </div>
-<form method="post" action="">
+    <form method="post" action="">
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="textNome" class="form-label text-primary">Nome</label>
-            <input type="text" class="form-control" id="txtNome" placeholder="Informe seu nome" required />
+            <label for="nome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome" required />
         </div>
-
         <div class="mb-3">
-            <label for="textSigla" class="form-label text-primary">Sigla</label>
-            <select name="txtSigla" id="txtSigla" class="form-select">
-                <option value="0">Selecione</option>
+            <label for="uf" class="form-label text-primary">Estado</label>
+            <select name="uf" id="uf" class="form-select" >
+                {% for uf in uf %}
+                <option value="{{ uf.id }}">{{ uf.nome }}</option>
+                {% endfor %}
             </select>
-
-        
-
-        <div class="mb-2">
-            <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Cancelar" class="btn btn-secondary">
         </div>
+        <div class="mb-3">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
     </form>
 </div>
-
 {% endblock %}

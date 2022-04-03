@@ -1,21 +1,21 @@
-#botaoInicial{
-    color: brown;
+body{
+    background-attachment: fixed;
+    background-size: 100%;
 }
 
 .btn{
     width: 120px;
 }
 
-body{
-    background-attachment: fixed;
-    background-size: 100%;
+#botaoInicial{
+    color: brown;
 }
 
 #imagemPrincipal{
     display: flex; 
-    justify-content: center;
+    justify-content: center; 
     flex-direction: column; 
-    width: 60%;
+    width: 60%; 
     margin-left: 20%; 
     margin-top: 5%;
     margin-bottom: 5%;
@@ -23,9 +23,17 @@ body{
 
 #conteudo-dados{
     display: flex; 
-    justify-content: center;
+    justify-content: center; 
     flex-direction: column; 
-    width: 60%;
+    width: 60%; 
     margin-left: 20%; 
     margin-top: 5%;
+}
+
+h4{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    font-style: italic;
 }

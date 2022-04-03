@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block corpo %}
+    <div id="conteudo-dados">
+        {% if user.is_authenticated %}
+        <p>
+            <div class="alert alert-info" role="alert">
+                <label class="text-primary"><strong>Usuário já está logado!</strong></label>
+            </div>
+        </p>
+        {% else %}
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            <p>Usuário/Senha inválidos. Verifique!</p>
+        </div>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="mb-3 row">
+                <label for="id_username" class="col-sm-2 col-form-label text-primary">Email</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="id_username" name="username" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="id_password" class="col-sm-2 col-form-label text-primary">Password</label>
+                <div class="col-sm-10">
+                <input type="password" class="form-control" id="id_password" name="password" required />
+                </div>
+            </div>
+            <input type="submit" value="Acessar" class="btn btn-primary">
+            <input type="reset" value="Cancelar" class="btn btn-warning">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}

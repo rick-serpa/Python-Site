@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Alterar Cliente{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Alteração de Cliente</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtNome" class="form-label text-primary">Nome</label>
+            <input type="text" class="form-control" id="txtNome" name="nome" value="{{ cliente.nome }}" placeholder="Informe seu nome" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtEmail" class="form-label text-primary">E-mail</label>
+            <input type="email" class="form-control" name="email" value="{{ cliente.email }}" id="txtEmail"
+            placeholder="usuario@provedor.com.br" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtDtNascimento" class="form-label text-primary">Data Nascimento</label>
+            <input type="datetime" class="form-control" name="nasc" value="{{ dtNasc }}" id="txtDtNascimento" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" />
+        </div>
+        <div class="mb-3">
+            <label for="txtCPFCNPJ" class="form-label text-primary">CPF/CNPJ</label>
+            <input type="text" class="form-control" name="cpfcnpj" value="{{ cliente.cpfcnpj }}" id="txtCPFCNPJ"
+            placeholder="Somente números" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtCidade" class="form-label text-primary">Cidade</label>
+            <select name="cidade" value="{{ cliente.cidade }}" id="txtCidade" class="form-select">
+                {% for cidades in cidade %}
+                {% if cidades.id == cidadeCliente.id %}
+                <option value="{{ cidades.id }}" selected>{{ cidades.nome }}</option>
+                {% else %}
+                <option value="{{ cidades.id }}">{{ cidades.nome }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtSexo" class="form-label text-primary">Sexo</label>
+            <select name="sexo" id="txtSexo" class="form-select">
+                {% if cliente.sexo == 'M' %}
+                <option value="M" selected>Masculino</option>
+                <option value="F">Feminino</option>
+                {% else %}
+                <option value="M">Masculino</option>
+                <option value="F" selected>Feminino</option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtProfissao" class="form-label text-primary">Profissão</label>
+            <input type="text" class="form-control" id="txtProfissao" name="profissao" value="{{ cliente.profissao }}" placeholder="Informe sua Profissão" required />
+        </div>
+        <div class="mb-3">
+            <label for="txtCarro" class="form-label text-primary">Possui Carro</label>
+            <select name="carro" id="txtCarro" class="form-select">
+                {% if cliente.carro == 'S' %}
+                <option value="S" selected>Sim</option>
+                <option value="N">Não</option>
+                {% else %}
+                <option value="S">Sim</option>
+                <option value="N" selected>Não</option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtEstCivil" class="form-label text-primary">Estado Civil</label>
+            <select name="EstCivil" id="txtEstCivil" class="form-select">
+                {% for estadoCivil in estCivil %}
+                {% if estadoCivil.id == estCliente %}
+                <option value="{{ estadoCivil.id }}" selected>{{ estadoCivil.descricao }}</option>
+                {% else %}
+                <option value="{{ estadoCivil.id }}">{{ estadoCivil.descricao }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtFilhos" class="form-label text-primary">Possui Filhos</label>
+            <select name="filhos" id="txtFilhos" class="form-select">
+                {% if cliente.filhos == 'S' %}
+                <option value="S" selected>Sim</option>
+                <option value="N">Não</option>
+                {% else %}
+                <option value="S">Sim</option>
+                <option value="N" selected>Não</option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="txtRenda" class="form-label text-primary">Renda</label>
+            <input type="text" class="form-control" id="txtRenda" name="renda" value="{{ cliente.renda }}" placeholder="Informe sua Renda" required />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Alterar" class="btn btn-warning" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}

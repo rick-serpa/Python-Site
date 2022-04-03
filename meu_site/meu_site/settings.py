@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v2ol_*6zbe_=)pozzdf!fi^u6&w^b-@m)0t^t%opec%+j!jrxv'
+SECRET_KEY = 'django-insecure-64#ot@@1r^+cbh8$407i6_#qjm)v8cae1k66^9s&(u#j@(!n*9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'loja',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': '',
-        'PORT': 3306,
+        'HOST' : 'localhost',
+        'USER' : 'root',
+        'PASSWORD' : '',
+        'PORT' : 3307,
     }
 }
 
@@ -124,6 +124,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = ['static']
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

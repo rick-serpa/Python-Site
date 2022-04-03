@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Excluir UF{% endblock %}
+
+{% block corpo %}
+<div id="conteudo-dados" >
+    <div style="display: flex; justify-content: center;">
+        <h1><label class='text-primary'>Exclusão de Estado Civil</label></h1>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="txtDescricao" class="form-label text-primary">Descrição</label>
+            <input type="text" class="form-control" id="txtDescricao" name="descricao" placeholder="Informe o Estado Civil" readonly value="{{ estadoCivil.descricao }}" />
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <input type="reset" value="Cancelar" class="btn btn-secondary" />
+        </div>        
+    </form>
+</div>
+{% endblock %}
